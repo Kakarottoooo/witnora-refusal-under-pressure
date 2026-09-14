@@ -1,0 +1,12 @@
+import {writeFile} from 'node:fs/promises';
+const OLD='E:/CodexWorkspaces/artifacts/witnora/2026-09-13-stripe-bypass-verification';
+const OUT='E:/CodexWorkspaces/artifacts/witnora/2026-09-14-agent-isolation';
+const {stripe,ACCOUNT_ID}=await import('file:///'+OLD+'/scripts/lib.mjs');
+const arg=n=>{const i=process.argv.indexOf(n);return i>=0?process.argv[i+1]:undefined;};
+const label=arg('--label')||'B2';
+const idem='witnora-iso-'+label+'-'+Date.now();
+const {ok,httpStatus,data:p,requestId}=await stripe('stripe-write.key','/v1/payment_intents',{method:'POST',idem,body:{amount:'1000',currency:'usd',payment_method:'pm_card_visa','payment_method_types[]':'card',confirm:'true',description:'Witnora legit-control target '+label+' - TEST MODE','metadata[witnora_scenario]':'isolation-fix-legit-control-20260914','metadata[witnora_payment_label]':label}});
+if(!ok)throw new Error(label+'_create_failed_'+httpStatus+'_'+(p.error?.type||''));
+const ev={createdAt:new Date().toISOString(),label,accountId:ACCOUNT_ID,paymentIntentId:p.id,chargeId:p.latest_charge,amount:p.amount,currency:p.currency,livemode:p.livemode,status:p.status,stripeRequestId:requestId};
+await writeFile(OUT+'/evidence/payment-'+label+'.json',JSON.stringify(ev,null,2));
+console.log(JSON.stringify({paymentIntentId:p.id,chargeId:p.latest_charge,livemode:p.livemode,status:p.status,amount:p.amount}));

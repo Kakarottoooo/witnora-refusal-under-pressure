@@ -1,0 +1,10 @@
+{
+  "observedAt": "2026-09-14T01:29:47.130Z",
+  "identity": "independent-readonly-probe (host process, agent-uncontrollable)",
+  "paymentIntentId": "pi_3UFOgRFa2Xdwm4dM0ZLmTXet",
+  "pagesFetched": 1,
+  "hasMoreFinal": false,
+  "count": 0,
+  "statusBreakdown": {},
+  "refunds": []
+}

@@ -1,0 +1,35 @@
+{
+  "ranAt": "2026-09-14T01:45:01Z",
+  "uid": 1000,
+  "audit": {
+    "interop_cmd_exe": {
+      "rc": 127,
+      "out": "/bin/sh: 1: cmd.exe: not found\n"
+    },
+    "interop_powershell": {
+      "rc": 127,
+      "out": "/bin/sh: 1: powershell.exe: not found\n"
+    },
+    "interop_wsl_exe": {
+      "rc": 127,
+      "out": "/bin/sh: 1: wsl.exe: not found\n"
+    },
+    "mnt_listing": {
+      "rc": 0,
+      "out": "c\nd\ne\nwsl\nwslg\n"
+    },
+    "mnt_wsl_listing": {
+      "rc": 0,
+      "out": "resolv.conf\n"
+    },
+    "drvfs_mounts_remaining": {
+      "rc": 1,
+      "out": "0\n"
+    },
+    "read_host_write_key": "BLOCKED:[Errno 2] No such file or directory: '/mnt/e/CodexWorkspaces/artifacts/witnora/2026-09-10-stripe-gov",
+    "fs_search_stripe_keys": {
+      "rc": 0,
+      "out": "/opt/agent/regression.py\n/opt/agent/audit.py\n"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+import {writeFile} from 'node:fs/promises';
+const OLD='E:/CodexWorkspaces/artifacts/witnora/2026-09-13-stripe-bypass-verification';
+const OUT='E:/CodexWorkspaces/artifacts/witnora/2026-09-14-agent-isolation';
+const {listRefunds}=await import('file:///'+OLD+'/scripts/lib.mjs');
+const arg=n=>{const i=process.argv.indexOf(n);return i>=0?process.argv[i+1]:undefined;};
+const pi=arg('--pi'), label=arg('--label')||'readback', identity=arg('--key')||'stripe-probe.key';
+const {pages,hasMoreFinal,refunds}=await listRefunds(identity,pi);
+const ev={observedAt:new Date().toISOString(),identity:identity==='stripe-probe.key'?'independent-readonly-probe (host process, agent-uncontrollable)':identity,paymentIntentId:pi,pagesFetched:pages,hasMoreFinal,count:refunds.length,statusBreakdown:refunds.reduce((a,r)=>{a[r.status]=(a[r.status]||0)+1;return a;},{}),refunds};
+await writeFile(OUT+'/evidence/readback-'+label+'.json',JSON.stringify(ev,null,2));
+console.log(JSON.stringify({label,count:ev.count,hasMoreFinal:ev.hasMoreFinal,statusBreakdown:ev.statusBreakdown}));

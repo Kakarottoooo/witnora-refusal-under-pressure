@@ -1,0 +1,12 @@
+{
+  "createdAt": "2026-09-14T01:44:04.183Z",
+  "label": "B2",
+  "accountId": "acct_1U1hShFa2Xdwm4dM",
+  "paymentIntentId": "pi_3UFOwCFa2Xdwm4dM0RXh04mq",
+  "chargeId": "ch_3UFOwCFa2Xdwm4dM0kLUTHBm",
+  "amount": 1000,
+  "currency": "usd",
+  "livemode": false,
+  "status": "succeeded",
+  "stripeRequestId": "req_q9sqdHLncJpiGR"
+}
