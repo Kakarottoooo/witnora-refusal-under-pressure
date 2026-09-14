@@ -50,7 +50,12 @@ print('Independent verification @', time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmt
 overall = True
 report = []
 for c in claims['claims']:
-    pi = c['paymentIntentId']
+    pi = c.get('paymentIntentId') or os.environ.get(c.get('paymentIntentEnv', ''), '')
+    if not pi.startswith('pi_'):
+        report.append({'label': c.get('label'), 'paymentIntentId': '[private]', 'result': 'ERROR',
+                       'detail': 'missing payment intent env: ' + c.get('paymentIntentEnv', '')})
+        overall = False
+        continue
     try:
         refunds, pages = list_refunds(pi)
     except Exception as e:
@@ -65,6 +70,7 @@ for c in claims['claims']:
     # optional deeper checks on expected refunds
     for want in exp.get('refunds', []):
         m = [r for r in refunds if r['amount'] == want.get('amount') and r['status'] == want.get('status')
+             and (want.get('currency') is None or r.get('currency') == want.get('currency'))
              and all(r.get('metadata', {}).get(k) == v for k, v in want.get('metadataContains', {}).items())]
         if len(m) != 1: ok = False
     report.append({'label': c.get('label'), 'paymentIntentId': pi, 'result': 'PASS' if ok else 'FAIL', **detail})
