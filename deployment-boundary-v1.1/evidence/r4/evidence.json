@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "witnora.deployment_boundary_evidence.v1",
+  "boundaryId": "stripe-test-refund-boundary-v1-1-recovery-r4",
+  "deploymentId": "stripe-test-runtime-20260914-boundary-v1-1-recovery-r4",
+  "observedAt": "2026-09-14T21:13:42.849Z",
+  "launcher": {
+    "artifactDigestSha256": "c79b87fce05edf63e8edcb826a8e5d07dfc563087539d9cc391bebb2374c432f",
+    "isolatedEnvironmentMeasured": true
+  },
+  "agentProcess": {
+    "identity": "uid:2001",
+    "privileged": false,
+    "isolatedFromHost": true,
+    "environmentVariableNames": [
+      "PATH",
+      "WITNORA_GATEWAY_TOKEN",
+      "WITNORA_GATEWAY_URL",
+      "WSLENV"
+    ],
+    "visibleBusinessWriteCredentialNames": []
+  },
+  "routes": [
+    {
+      "id": "witnora-gateway",
+      "destinationOrigin": "http://127.0.0.1:8793",
+      "targetWriteAuthority": "GATEWAY_ONLY",
+      "mediatedByGateway": true
+    },
+    {
+      "id": "target-without-agent-credential",
+      "destinationOrigin": "https://api.stripe.com",
+      "targetWriteAuthority": "NONE",
+      "mediatedByGateway": false
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "agent-shell",
+      "kind": "shell",
+      "targetWriteAuthority": "NONE"
+    },
+    {
+      "id": "witnora-submit",
+      "kind": "connector",
+      "targetWriteAuthority": "GATEWAY_ONLY"
+    }
+  ],
+  "unknownCapabilityIds": [],
+  "protectedComponents": [
+    {
+      "id": "gateway",
+      "digestSha256": "aeadb6691b8fa8499c0ecbb61620cab0f4373ed0dd58eaf7ca71284505bf91bd",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    },
+    {
+      "id": "boundary-policy",
+      "digestSha256": "27bdb84dea9afb052268be5e365ef98289b4d5766c6bc9647a0922eb26a1351d",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    },
+    {
+      "id": "boundary-core",
+      "digestSha256": "1e5704f5df8df53db83671c2d63fb74ebd32d1f1c03360ee0b65c96623f7b9c6",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    },
+    {
+      "id": "execution-worker",
+      "digestSha256": "4f4a979f89b6ce776cd92b8d52f7c2e57abd401b2bbc603151e6af5f582aa47f",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    },
+    {
+      "id": "agent-launch",
+      "digestSha256": "0ad3eb34299adb07102f762d4a634d4b8e71f57631066d8ca34210d3bc2dce52",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    },
+    {
+      "id": "cli-entry",
+      "digestSha256": "bf5d27ce62a1f6bb8822b15e343009413cf7dc1d86c2615d8690fb9d880e9f24",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    },
+    {
+      "id": "rules",
+      "digestSha256": "0f07d111a2d634708b2bd3ae90e84f2ee39bfe5f6ff327a2c03bafcdc135bbca",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    },
+    {
+      "id": "observer",
+      "digestSha256": "c13e7d58838205e143718c2f5a05024f52503b25fc104aa36742fa372232a4a1",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    },
+    {
+      "id": "launcher-config",
+      "digestSha256": "b338a0bca3a21200f6d31e6549d889a08228230b6e5bb4561f2622b32e93123e",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    },
+    {
+      "id": "stripe-binding",
+      "digestSha256": "a259fabace3d9a886446ec2117f5f3dc831ff5d3a1cefe13bcb02fc2379e5ffb",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    }
+  ],
+  "observer": {
+    "id": "witnora.stripe-test.refund.read-only.v1",
+    "healthy": true,
+    "credentialClass": "READ_ONLY",
+    "observedAt": "2026-09-14T21:13:42.849Z"
+  },
+  "evidenceContinuity": {
+    "status": "VERIFIED",
+    "sequence": 5,
+    "previousReportSha256": "1afe6378a9eab44245c2061c1f29b74b827ae1b50fd8ea91375855cbc32890e6",
+    "previousEvidenceSha256": "b218de21412a3da4fb018521e12214a11e0455d114321d2ef6bd802bda45ed9b"
+  }
+}
