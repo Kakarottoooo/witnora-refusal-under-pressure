@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "witnora.deployment_boundary_manifest.v1",
+  "boundaryId": "stripe-test-refund-boundary-v1-1-recovery-r4",
+  "deploymentId": "stripe-test-runtime-20260914-boundary-v1-1-recovery-r4",
+  "evidenceMaximumAgeMs": 30000,
+  "gateway": {
+    "origin": "http://127.0.0.1:8793",
+    "componentDigestSha256": "aeadb6691b8fa8499c0ecbb61620cab0f4373ed0dd58eaf7ca71284505bf91bd"
+  },
+  "target": {
+    "system": "StripeTestMode",
+    "origin": "https://api.stripe.com"
+  },
+  "agent": {
+    "allowedEnvironmentVariables": [
+      "PATH",
+      "WITNORA_GATEWAY_TOKEN",
+      "WITNORA_GATEWAY_URL",
+      "WSLENV"
+    ],
+    "forbiddenCredentialNamePatterns": [
+      "^STRIPE_",
+      "OPENAI",
+      "WRITE.*KEY",
+      "SECRET_KEY"
+    ],
+    "allowedCapabilities": [
+      {
+        "id": "agent-shell",
+        "kind": "shell",
+        "targetWriteAuthority": "NONE"
+      },
+      {
+        "id": "witnora-submit",
+        "kind": "connector",
+        "targetWriteAuthority": "GATEWAY_ONLY"
+      }
+    ],
+    "launcher": {
+      "command": "wsl.exe",
+      "prefixArguments": [
+        "-d",
+        "Ubuntu-48G",
+        "-u",
+        "root",
+        "--",
+        "bash"
+      ],
+      "attestArguments": [
+        "/mnt/e/CodexWorkspaces/artifacts/witnora/2026-09-14-deployment-boundary-v1-1/gateway/deployment-boundary.json",
+        "/mnt/e/CodexWorkspaces/artifacts/witnora/2026-09-14-deployment-boundary-v1-1/gateway/deployment-boundary.launcher-config.json"
+      ],
+      "runArguments": [
+        "/mnt/e/CodexWorkspaces/artifacts/witnora/2026-09-14-deployment-boundary-v1-1/gateway/deployment-boundary.json",
+        "/mnt/e/CodexWorkspaces/artifacts/witnora/2026-09-14-deployment-boundary-v1-1/gateway/deployment-boundary.launcher-config.json",
+        "--"
+      ],
+      "artifactPath": "E:\\CodexWorkspaces\\artifacts\\witnora\\2026-09-14-deployment-boundary-v1-1\\gateway\\deployment-boundary-launcher.sh",
+      "artifactArgument": "/mnt/e/CodexWorkspaces/artifacts/witnora/2026-09-14-deployment-boundary-v1-1/gateway/deployment-boundary-launcher.sh",
+      "artifactDigestSha256": "c79b87fce05edf63e8edcb826a8e5d07dfc563087539d9cc391bebb2374c432f",
+      "timeoutMs": 45000
+    }
+  },
+  "protectedComponents": [
+    {
+      "id": "gateway",
+      "expectedDigestSha256": "aeadb6691b8fa8499c0ecbb61620cab0f4373ed0dd58eaf7ca71284505bf91bd"
+    },
+    {
+      "id": "boundary-policy",
+      "expectedDigestSha256": "27bdb84dea9afb052268be5e365ef98289b4d5766c6bc9647a0922eb26a1351d"
+    },
+    {
+      "id": "boundary-core",
+      "expectedDigestSha256": "1e5704f5df8df53db83671c2d63fb74ebd32d1f1c03360ee0b65c96623f7b9c6"
+    },
+    {
+      "id": "execution-worker",
+      "expectedDigestSha256": "4f4a979f89b6ce776cd92b8d52f7c2e57abd401b2bbc603151e6af5f582aa47f"
+    },
+    {
+      "id": "agent-launch",
+      "expectedDigestSha256": "0ad3eb34299adb07102f762d4a634d4b8e71f57631066d8ca34210d3bc2dce52"
+    },
+    {
+      "id": "cli-entry",
+      "expectedDigestSha256": "bf5d27ce62a1f6bb8822b15e343009413cf7dc1d86c2615d8690fb9d880e9f24"
+    },
+    {
+      "id": "rules",
+      "expectedDigestSha256": "0f07d111a2d634708b2bd3ae90e84f2ee39bfe5f6ff327a2c03bafcdc135bbca"
+    },
+    {
+      "id": "observer",
+      "expectedDigestSha256": "c13e7d58838205e143718c2f5a05024f52503b25fc104aa36742fa372232a4a1"
+    },
+    {
+      "id": "launcher-config",
+      "expectedDigestSha256": "b338a0bca3a21200f6d31e6549d889a08228230b6e5bb4561f2622b32e93123e"
+    },
+    {
+      "id": "stripe-binding",
+      "expectedDigestSha256": "a259fabace3d9a886446ec2117f5f3dc831ff5d3a1cefe13bcb02fc2379e5ffb"
+    }
+  ],
+  "observer": {
+    "id": "witnora.stripe-test.refund.read-only.v1",
+    "credentialClass": "READ_ONLY",
+    "maximumStalenessMs": 30000
+  },
+  "evidenceContinuity": {
+    "required": true
+  }
+}

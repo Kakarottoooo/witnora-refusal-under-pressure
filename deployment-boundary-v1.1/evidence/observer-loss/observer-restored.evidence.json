@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "witnora.deployment_boundary_evidence.v1",
+  "boundaryId": "stripe-test-refund-boundary-v1-1-observer-loss-r2",
+  "deploymentId": "stripe-test-runtime-20260914-boundary-v1-1-observer-loss-r2",
+  "observedAt": "2026-09-14T20:45:34.275Z",
+  "launcher": {
+    "artifactDigestSha256": "c79b87fce05edf63e8edcb826a8e5d07dfc563087539d9cc391bebb2374c432f",
+    "isolatedEnvironmentMeasured": true
+  },
+  "agentProcess": {
+    "identity": "uid:2001",
+    "privileged": false,
+    "isolatedFromHost": true,
+    "environmentVariableNames": [
+      "PATH",
+      "WITNORA_GATEWAY_TOKEN",
+      "WITNORA_GATEWAY_URL",
+      "WSLENV"
+    ],
+    "visibleBusinessWriteCredentialNames": []
+  },
+  "routes": [
+    {
+      "id": "witnora-gateway",
+      "destinationOrigin": "http://127.0.0.1:8793",
+      "targetWriteAuthority": "GATEWAY_ONLY",
+      "mediatedByGateway": true
+    },
+    {
+      "id": "target-without-agent-credential",
+      "destinationOrigin": "https://api.stripe.com",
+      "targetWriteAuthority": "NONE",
+      "mediatedByGateway": false
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "agent-shell",
+      "kind": "shell",
+      "targetWriteAuthority": "NONE"
+    },
+    {
+      "id": "witnora-submit",
+      "kind": "connector",
+      "targetWriteAuthority": "GATEWAY_ONLY"
+    }
+  ],
+  "unknownCapabilityIds": [],
+  "protectedComponents": [
+    {
+      "id": "gateway",
+      "digestSha256": "aeadb6691b8fa8499c0ecbb61620cab0f4373ed0dd58eaf7ca71284505bf91bd",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    },
+    {
+      "id": "boundary-policy",
+      "digestSha256": "27bdb84dea9afb052268be5e365ef98289b4d5766c6bc9647a0922eb26a1351d",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    },
+    {
+      "id": "boundary-core",
+      "digestSha256": "1e5704f5df8df53db83671c2d63fb74ebd32d1f1c03360ee0b65c96623f7b9c6",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    },
+    {
+      "id": "execution-worker",
+      "digestSha256": "4f4a979f89b6ce776cd92b8d52f7c2e57abd401b2bbc603151e6af5f582aa47f",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    },
+    {
+      "id": "agent-launch",
+      "digestSha256": "0ad3eb34299adb07102f762d4a634d4b8e71f57631066d8ca34210d3bc2dce52",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    },
+    {
+      "id": "cli-entry",
+      "digestSha256": "bf5d27ce62a1f6bb8822b15e343009413cf7dc1d86c2615d8690fb9d880e9f24",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    },
+    {
+      "id": "rules",
+      "digestSha256": "e8ff6377a770a3d696aa31db30f2b16c285e018ffd45cb0a5607ac6160a84ab4",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    },
+    {
+      "id": "observer",
+      "digestSha256": "c13e7d58838205e143718c2f5a05024f52503b25fc104aa36742fa372232a4a1",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    },
+    {
+      "id": "launcher-config",
+      "digestSha256": "5e6dabcf070086cbc2f86ffb5b36ca69a1877525f1353b8858dd05a1de223990",
+      "healthy": true,
+      "agentCanRead": false,
+      "agentCanModify": false,
+      "agentCanStop": false
+    }
+  ],
+  "observer": {
+    "id": "witnora.stripe-test.refund.read-only.v1",
+    "healthy": true,
+    "credentialClass": "READ_ONLY",
+    "observedAt": "2026-09-14T20:45:34.275Z"
+  },
+  "evidenceContinuity": {
+    "status": "VERIFIED",
+    "sequence": 2,
+    "previousReportSha256": "1d4b5af71f510e45608347f993cea2bfac2bd26a4678c9b65e659766cfa78943",
+    "previousEvidenceSha256": "9b861eae9ece8b04bc5780d26ea8b5a2f22de4109378d2241b7a88099e0bbf5f"
+  }
+}

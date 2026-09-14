@@ -1,0 +1,49 @@
+ORIGINAL
+{
+  "result": "PASS",
+  "reportId": "531e3af9-bf2e-4f2f-acf9-2f9e8e200be6",
+  "checks": [
+    {
+      "id": "signed_payload_digest",
+      "pass": true
+    },
+    {
+      "id": "ed25519_signature",
+      "pass": true
+    },
+    {
+      "id": "manifest_binding",
+      "pass": true
+    },
+    {
+      "id": "evidence_binding",
+      "pass": true
+    }
+  ]
+}
+exit=0
+
+TAMPERED
+{
+  "result": "UNKNOWN",
+  "reportId": "531e3af9-bf2e-4f2f-acf9-2f9e8e200be6",
+  "checks": [
+    {
+      "id": "signed_payload_digest",
+      "pass": false
+    },
+    {
+      "id": "ed25519_signature",
+      "pass": false
+    },
+    {
+      "id": "manifest_binding",
+      "pass": true
+    },
+    {
+      "id": "evidence_binding",
+      "pass": true
+    }
+  ]
+}
+exit=1

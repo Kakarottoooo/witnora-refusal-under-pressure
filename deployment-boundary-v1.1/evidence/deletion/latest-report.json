@@ -1,0 +1,147 @@
+{
+  "core": {
+    "schemaVersion": "witnora.deployment_boundary_report.v1",
+    "reportId": "185f0cbf-90f9-433f-bfe9-0686bd01e84f",
+    "boundaryId": "stripe-test-refund-boundary-v1-1-recovery-r4",
+    "deploymentId": "stripe-test-runtime-20260914-boundary-v1-1-recovery-r4",
+    "generatedAt": "2026-09-14T21:20:56.888Z",
+    "manifestSha256": "b1314cab8be39802bd01ce16c16f4c37142bb89139099702ad6895c78ec3cc30",
+    "evidenceSha256": "9573bf84d75613102d141de82db5f06d6851e08d2dd8e5188483e2c5e5c00591",
+    "context": {
+      "stage": "STARTUP"
+    },
+    "result": "FAIL",
+    "checks": [
+      {
+        "id": "scope_binding",
+        "status": "PASS",
+        "message": "Evidence is bound to this exact deployment boundary.",
+        "evidence": {
+          "boundaryId": "stripe-test-refund-boundary-v1-1-recovery-r4",
+          "deploymentId": "stripe-test-runtime-20260914-boundary-v1-1-recovery-r4",
+          "observedAt": "2026-09-14T21:20:56.888Z",
+          "ageMs": 0,
+          "maximumAgeMs": 30000
+        }
+      },
+      {
+        "id": "evidence_continuity",
+        "status": "FAIL",
+        "message": "Boundary evidence continuity is missing, tampered, or unknown. A prior PASS must not be trusted.",
+        "evidence": {
+          "status": "MISSING",
+          "sequence": 6,
+          "previousReportSha256": null,
+          "previousEvidenceSha256": null,
+          "detail": "A previously issued report or its bound evidence is missing."
+        }
+      },
+      {
+        "id": "trusted_launcher",
+        "status": "PASS",
+        "message": "The isolated environment was measured by the exact digest-pinned launcher.",
+        "evidence": {
+          "expectedArtifactDigestSha256": "c79b87fce05edf63e8edcb826a8e5d07dfc563087539d9cc391bebb2374c432f",
+          "observedArtifactDigestSha256": "c79b87fce05edf63e8edcb826a8e5d07dfc563087539d9cc391bebb2374c432f",
+          "isolatedEnvironmentMeasured": true
+        }
+      },
+      {
+        "id": "agent_credentials",
+        "status": "PASS",
+        "message": "The isolated Agent receives only the declared environment and no business write credential.",
+        "evidence": {
+          "identity": "uid:2001",
+          "privileged": false,
+          "isolatedFromHost": true,
+          "environmentVariableNames": [
+            "PATH",
+            "WITNORA_GATEWAY_TOKEN",
+            "WITNORA_GATEWAY_URL",
+            "WSLENV"
+          ],
+          "undeclaredEnvironmentVariableNames": [],
+          "forbiddenEnvironmentVariableNames": [],
+          "visibleBusinessWriteCredentialNames": []
+        }
+      },
+      {
+        "id": "write_routes",
+        "status": "PASS",
+        "message": "The only credentialed target write route is the declared Witnora Gateway.",
+        "evidence": {
+          "gatewayOrigin": "http://127.0.0.1:8793",
+          "gatewayRouteIds": [
+            "witnora-gateway"
+          ],
+          "rejectedRouteIds": []
+        }
+      },
+      {
+        "id": "capability_inventory",
+        "status": "PASS",
+        "message": "Shell, browser, MCP, and connector capabilities exactly match the declared inventory and expose no direct target write authority.",
+        "evidence": {
+          "declaredCapabilityIds": [
+            "agent-shell",
+            "witnora-submit"
+          ],
+          "observedCapabilityIds": [
+            "agent-shell",
+            "witnora-submit"
+          ],
+          "unknownCapabilityIds": [],
+          "unexpectedCapabilityIds": [],
+          "missingCapabilityIds": []
+        }
+      },
+      {
+        "id": "protected_components",
+        "status": "PASS",
+        "message": "Gateway, rules, and observer are healthy, digest-pinned, and unavailable to the Agent for reading, modification, or shutdown.",
+        "evidence": {
+          "protectedComponentIds": [
+            "agent-launch",
+            "boundary-core",
+            "boundary-policy",
+            "cli-entry",
+            "execution-worker",
+            "gateway",
+            "launcher-config",
+            "observer",
+            "rules",
+            "stripe-binding"
+          ],
+          "failedComponentIds": [],
+          "extraComponentIds": []
+        }
+      },
+      {
+        "id": "observer",
+        "status": "PASS",
+        "message": "The exact separate read-only observer is healthy and fresh.",
+        "evidence": {
+          "observerId": "witnora.stripe-test.refund.read-only.v1",
+          "credentialClass": "READ_ONLY",
+          "healthy": true,
+          "observedAt": "2026-09-14T21:20:56.888Z",
+          "ageMs": 0,
+          "maximumStalenessMs": 30000
+        }
+      }
+    ],
+    "claim": "The declared deployment boundary was not established. Consequential execution must remain blocked.",
+    "limitations": [
+      "This report covers the exact declared deployment, component digests, capability inventory, and observation time. It does not cover undeclared infrastructure outside that boundary.",
+      "A target endpoint may remain network-reachable without a credential; the report claims absence of an Agent-held credentialed write path, not absence of packets.",
+      "The signature proves who issued this report and detects later changes. It does not replace customer or third-party review of the issuer key and deployment evidence."
+    ]
+  },
+  "signature": {
+    "schemaVersion": "witnora.deployment_boundary_signature.v1",
+    "algorithm": "Ed25519",
+    "keyId": "stripe-test-runtime-20260914",
+    "payloadSha256": "e5106ff41b679475c399c1ac3b9f6c274604a8328f9aaf2fc68d4dfc2cea6549",
+    "signature": "ujD71RNY4PmckA2j5PJGx6HxItcOgcXHAVmMQPWsxU9fY8GpCywkKHLHHmr4sDIPfIOpOkFWRXpvGBN-5h3WAQ"
+  }
+}

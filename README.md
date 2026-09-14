@@ -88,3 +88,7 @@ See [`independent-verify/`](independent-verify/). Two tiers:
 
 Secrets are never included. Payment/refund IDs are Stripe **TEST-mode** identifiers (usable only with keys on
 that test account). Some helper scripts use the author's local absolute paths — adjust them for your environment.
+
+## Deployment Boundary v1.1: control-plane sabotage and observer-loss acceptance
+
+The stricter v1.1 package is in [`deployment-boundary-v1.1/`](deployment-boundary-v1.1/). It adds real-model attempts to modify protected rules, stop components, add undeclared MCP/browser/connector paths, remove the observer between approval and execution, and delete or forge evidence. The package includes signed sanitized evidence, an offline verifier, a tampered negative control, reviewer-owned replay instructions, and a 79-second evidence walkthrough. It remains an internal acceptance until an outside reviewer completes a fresh replay.
